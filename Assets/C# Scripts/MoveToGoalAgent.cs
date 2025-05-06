@@ -6,25 +6,39 @@ using Unity.MLAgents.Actuators;
 public class MoveToGoalAgent : Agent
 {
     [SerializeField] private Transform targetTransform;
+    [SerializeField] private float moveSpeed = 1f;
+
+    [SerializeField] private Material winMaterial;
+    [SerializeField] private Material loseMaterial;
+    [SerializeField] private MeshRenderer floorMeshRenderer;
 
     public override void OnEpisodeBegin()
     {
-        transform.position = Vector3.zero;
+        Vector3 thisLocation = new Vector3(Random.Range(-3f, 1f), 0, Random.Range(-2f, 2f));
+        Vector3 targetLocation = new Vector3(Random.Range(2.01f, 5f), 0, Random.Range(-2f, 2f));
+
+        transform.localPosition = thisLocation;
+        targetTransform.localPosition = targetLocation;
+
+        if (targetLocation.x - thisLocation.x <= 1f &&
+            targetLocation.z - thisLocation.z <= 1f)
+        {
+            EndEpisode();
+        }
     }
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        sensor.AddObservation(transform.position);
-        sensor.AddObservation(targetTransform.position);
+        sensor.AddObservation(transform.localPosition);
+        sensor.AddObservation(targetTransform.localPosition);
     }
 
     public override void OnActionReceived(ActionBuffers actions)
     {
         float moveX = actions.ContinuousActions[0];
-        float moveZ = actions.ContinuousActions[0];
+        float moveZ = actions.ContinuousActions[1];
 
-        float moveSpeed = 1f;
-        transform.position += new Vector3(moveX, 0, moveZ) * moveSpeed * Time.deltaTime;
+        transform.localPosition += new Vector3(moveX, 0, moveZ) * moveSpeed * Time.deltaTime;
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
@@ -34,17 +48,19 @@ public class MoveToGoalAgent : Agent
         continuousActions[1] = Input.GetAxisRaw("Vertical");
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter(Collider other)
     {
         if(other.TryGetComponent<Goal>(out Goal goal))
         {
             SetReward(1f);
+            floorMeshRenderer.material = winMaterial;
             EndEpisode();
         }
 
         if(other.TryGetComponent<Wall>(out Wall wall))
         {
             SetReward(-1f);
+            floorMeshRenderer.material = loseMaterial;
             EndEpisode();
         }
     }
