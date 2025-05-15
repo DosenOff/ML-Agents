@@ -1189,7 +1189,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1850712643221446941}
   m_Layer: 0
-  m_Name: Environment
+  m_Name: MoveToGoalEnv
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

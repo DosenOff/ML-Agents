@@ -19,12 +19,6 @@ public class MoveToGoalAgent : Agent
 
         transform.localPosition = thisLocation;
         targetTransform.localPosition = targetLocation;
-
-        if (targetLocation.x - thisLocation.x <= 1f &&
-            targetLocation.z - thisLocation.z <= 1f)
-        {
-            EndEpisode();
-        }
     }
 
     public override void CollectObservations(VectorSensor sensor)
