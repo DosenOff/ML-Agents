@@ -7,19 +7,16 @@ public class LavaAgent : Agent
 {
     [SerializeField] private Transform targetTransform;
     [SerializeField] private float moveSpeed = 1f;
-
     [SerializeField] private float jump = 3f;
-    public bool isGrounded;
 
+    public bool isGrounded;
+    private Rigidbody rb;
+
+    [SerializeField] private MeshRenderer[] floorMeshRenderers;
     [SerializeField] private Material winMaterial;
     [SerializeField] private Material partialMaterial;
     [SerializeField] private Material loseMaterial;
-    [SerializeField] private MeshRenderer floorMeshRenderer;
 
-    private Rigidbody rb;
-
-    private float applaud = 1f;
-    private float change = 1f;
     private bool canTouch;
 
     public void Start()
@@ -36,8 +33,6 @@ public class LavaAgent : Agent
         targetTransform.localPosition = targetLocation;
 
         canTouch = true;
-        ///change += 0.001f;
-        ///applaud = applaud / change;
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -61,7 +56,6 @@ public class LavaAgent : Agent
             if (jumpNow == 1)
             {
                 TryJump(moveX, moveZ);
-                ///change -= 0.5f;
             }
         }
 
@@ -89,22 +83,43 @@ public class LavaAgent : Agent
         if (other.TryGetComponent<Goal>(out Goal goal))
         {
             SetReward(3f);
-            floorMeshRenderer.material = winMaterial;
+            SetColor("win");
             EndEpisode();
         }
 
         if (other.TryGetComponent<GoalFloor>(out GoalFloor goalFloor) && canTouch)
         {
             AddReward(0.25f);
-            floorMeshRenderer.material = partialMaterial;
+            SetColor("partial");
             canTouch = false;
         }
 
         if (other.TryGetComponent<Wall>(out Wall wall))
         {
             SetReward(-1f);
-            floorMeshRenderer.material = loseMaterial;
+            SetColor("lose");
             EndEpisode();
+        }
+    }
+
+    private void SetColor(string condition)
+    {
+        foreach (MeshRenderer n in floorMeshRenderers)  
+        {
+            switch (condition)
+            {
+                case "win":
+                    n.material = winMaterial;
+                    break;
+
+                case "partial":
+                    n.material = partialMaterial;
+                    break;
+
+                case "lose":
+                    n.material = loseMaterial;
+                    break;
+            }
         }
     }
 }

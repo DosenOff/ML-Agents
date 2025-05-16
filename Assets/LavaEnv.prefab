@@ -972,10 +972,12 @@ MonoBehaviour:
   moveSpeed: 3.5
   jump: 7
   isGrounded: 0
+  floorMeshRenderers:
+  - {fileID: 7171515420742999012}
+  - {fileID: 602832330590031319}
   winMaterial: {fileID: 2100000, guid: 184b1850d93cf9d41822dc224a5c23bd, type: 2}
   partialMaterial: {fileID: 2100000, guid: 9863a5ad8c96cf041b1805861b72df34, type: 2}
   loseMaterial: {fileID: 2100000, guid: faab370693aeaf24990ef19cc600e49f, type: 2}
-  floorMeshRenderer: {fileID: 7171515420742999012}
 --- !u!65 &1975815556049271064
 BoxCollider:
   m_ObjectHideFlags: 0
