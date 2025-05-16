@@ -9,6 +9,7 @@ public class LavaAgent : Agent
     [SerializeField] private float moveSpeed = 1f;
     [SerializeField] private float jump = 3f;
 
+    public bool isLava;
     public bool isGrounded;
     private Rigidbody rb;
 
@@ -22,6 +23,17 @@ public class LavaAgent : Agent
     public void Start()
     {
         rb = GetComponent<Rigidbody>();
+    }
+
+    public void FixedUpdate()
+    {
+        RaycastHit hit;
+        isLava = Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 15f, LayerMask.GetMask("Hazard"));
+
+        if (isLava)
+        {
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * hit.distance, Color.blue);
+        }
     }
 
     public override void OnEpisodeBegin()
@@ -40,6 +52,7 @@ public class LavaAgent : Agent
         sensor.AddObservation(transform.localPosition);
         sensor.AddObservation(targetTransform.localPosition);
         sensor.AddObservation(isGrounded);
+        sensor.AddObservation(isLava);
     }
 
     public override void OnActionReceived(ActionBuffers actions)

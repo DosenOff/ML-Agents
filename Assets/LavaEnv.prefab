@@ -919,7 +919,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 7
+    VectorObservationSize: 8
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 2
@@ -971,6 +971,7 @@ MonoBehaviour:
   targetTransform: {fileID: 9201376836527727287}
   moveSpeed: 3.5
   jump: 7
+  isLava: 0
   isGrounded: 0
   floorMeshRenderers:
   - {fileID: 7171515420742999012}
@@ -1612,7 +1613,7 @@ GameObject:
   - component: {fileID: 6251774036749571033}
   - component: {fileID: 2904086151643070649}
   - component: {fileID: 2975163002684834071}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Lava
   m_TagString: Untagged
   m_Icon: {fileID: 0}
