@@ -1,0 +1,56 @@
+{
+    "Lava": {
+        "checkpoints": [
+            {
+                "steps": 499995,
+                "file_path": "results\\LavaAgent2\\Lava\\Lava-499995.onnx",
+                "reward": 1.4361951222143523,
+                "creation_time": 1747443030.3600187,
+                "auxillary_file_paths": [
+                    "results\\LavaAgent2\\Lava\\Lava-499995.pt"
+                ]
+            },
+            {
+                "steps": 500023,
+                "file_path": "results\\LavaAgent2\\Lava\\Lava-500023.onnx",
+                "reward": 1.42371359254116,
+                "creation_time": 1747443030.4387717,
+                "auxillary_file_paths": [
+                    "results\\LavaAgent2\\Lava\\Lava-500023.pt"
+                ]
+            },
+            {
+                "steps": 999985,
+                "file_path": "results\\LavaAgent2\\Lava\\Lava-999985.onnx",
+                "reward": 2.780073172580905,
+                "creation_time": 1747443977.1776495,
+                "auxillary_file_paths": [
+                    "results\\LavaAgent2\\Lava\\Lava-999985.pt"
+                ]
+            },
+            {
+                "steps": 1000027,
+                "file_path": "results\\LavaAgent2\\Lava\\Lava-1000027.onnx",
+                "reward": 2.781359225511551,
+                "creation_time": 1747443977.2552867,
+                "auxillary_file_paths": [
+                    "results\\LavaAgent2\\Lava\\Lava-1000027.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 1000027,
+            "file_path": "results\\LavaAgent2\\Lava.onnx",
+            "reward": 2.781359225511551,
+            "creation_time": 1747443977.2552867,
+            "auxillary_file_paths": [
+                "results\\LavaAgent2\\Lava\\Lava-1000027.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.2.2+cu121"
+    }
+}
