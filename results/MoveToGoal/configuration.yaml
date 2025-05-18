@@ -1,18 +1,18 @@
 default_settings: null
 behaviors:
-  My Behavior:
+  MoveToGoal:
     trainer_type: ppo
     hyperparameters:
-      batch_size: 1024
-      buffer_size: 10240
+      batch_size: 10
+      buffer_size: 100
       learning_rate: 0.0003
-      beta: 0.005
+      beta: 0.0005
       epsilon: 0.2
-      lambd: 0.95
+      lambd: 0.99
       num_epoch: 3
       shared_critic: false
       learning_rate_schedule: linear
-      beta_schedule: linear
+      beta_schedule: constant
       epsilon_schedule: linear
     network_settings:
       normalize: false
@@ -34,12 +34,12 @@ behaviors:
           memory: null
           goal_conditioning_type: hyper
           deterministic: false
-    init_path: null
+    init_path: results\MoveToGoal\MoveToGoal\checkpoint.pt
     keep_checkpoints: 5
     checkpoint_interval: 500000
     max_steps: 500000
     time_horizon: 64
-    summary_freq: 50000
+    summary_freq: 10000
     threaded: false
     self_play: null
     behavioral_cloning: null
@@ -63,11 +63,11 @@ engine_settings:
   no_graphics: false
 environment_parameters: null
 checkpoint_settings:
-  run_id: MoveToGoal
-  initialize_from: null
+  run_id: MoveToGoal2
+  initialize_from: MoveToGoal
   load_model: false
   resume: false
-  force: false
+  force: true
   train_model: false
   inference: false
   results_dir: results

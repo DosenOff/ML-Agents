@@ -1,23 +1,23 @@
 {
-    "My Behavior": {
+    "MoveToGoal": {
         "checkpoints": [
             {
-                "steps": 105671,
-                "file_path": "results\\MoveToGoal\\My Behavior\\My Behavior-105671.onnx",
-                "reward": 1.0,
-                "creation_time": 1746503698.5748503,
+                "steps": 81844,
+                "file_path": "results\\MoveToGoal2\\MoveToGoal\\MoveToGoal-81844.onnx",
+                "reward": null,
+                "creation_time": 1746510969.0002327,
                 "auxillary_file_paths": [
-                    "results\\MoveToGoal\\My Behavior\\My Behavior-105671.pt"
+                    "results\\MoveToGoal2\\MoveToGoal\\MoveToGoal-81844.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 105671,
-            "file_path": "results\\MoveToGoal\\My Behavior.onnx",
-            "reward": 1.0,
-            "creation_time": 1746503698.5748503,
+            "steps": 81844,
+            "file_path": "results\\MoveToGoal2\\MoveToGoal.onnx",
+            "reward": null,
+            "creation_time": 1746510969.0002327,
             "auxillary_file_paths": [
-                "results\\MoveToGoal\\My Behavior\\My Behavior-105671.pt"
+                "results\\MoveToGoal2\\MoveToGoal\\MoveToGoal-81844.pt"
             ]
         }
     },
